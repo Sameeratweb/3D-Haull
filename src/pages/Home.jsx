@@ -16,20 +16,16 @@ const Home = () => {
         <AnimatePresence>
             {snap.intro && (
                 <motion.div className='home' {...slideAnimation("left")}>
-                    {/* Floating fixed header */}
-                    <motion.header className='home-header' {...slideAnimation("down")}>
-                        <img src="./threejs.png" alt="logo" className='w-8 h-8 object-contain' />
-                    </motion.header>
 
                     {/* Section 1: Hero */}
                     <section className="home-section">
                         <motion.div className='home-content' {...headContainerAnimation}>
                             <motion.div {...headTextAnimation}>
-                                <h1 className="head-text">LET'S <br className='xl:block hidden'/> DO IT</h1>
+                                <h1 className="head-text">3D <br className='xl:block hidden'/> HAUL</h1>
                             </motion.div>
                             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
                                 <p className='max-w-md font-normal text-gray-600 text-base'>
-                                    Unleash your imagination and design your own ultimate look. Experience cutting-edge 3D configuration in real-time.
+                                    Customize shirts, pants, and shoes with interactive 3D controls and create a look that is uniquely yours.
                                 </p>
                                 <CustomButton 
                                     type="filled"
@@ -46,15 +42,17 @@ const Home = () => {
                         <motion.div className='home-content' {...headContainerAnimation}>
                             <motion.div {...headTextAnimation}>
                                 <h1 className="text-5xl xl:text-6xl font-black text-black leading-tight">
-                                    PREMIUM<br/>CRAFT
+                                    LIVE 3D <br/>PREVIEW
                                 </h1>
                             </motion.div>
                             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
                                 <p className='max-w-md font-normal text-gray-600 text-base'>
-                                    Engineered with the finest heavy-weight fabrics and modern tailoring. Scroll to rotate and inspect every angle of the athletic silhouette.
+                                    
+                                See every change instantly.
+Rotate, zoom, and inspect your outfit from every angle before making your final design.
                                 </p>
                                 <div className="text-sm font-semibold text-blue-600 tracking-wider uppercase">
-                                    Swipe or scroll down to explore
+                                    scroll down to explore
                                 </div>
                             </motion.div>
                         </motion.div>
@@ -65,7 +63,7 @@ const Home = () => {
                         <motion.div className='home-content' {...headContainerAnimation}>
                             <motion.div {...headTextAnimation}>
                                 <h1 className="text-5xl xl:text-6xl font-black text-black leading-tight">
-                                    UNLIMITED<br/>STYLES
+                                    PERSONALIZE<br/>EVERYTHING
                                 </h1>
                             </motion.div>
                             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>

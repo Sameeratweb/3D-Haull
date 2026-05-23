@@ -14,67 +14,28 @@ const PRODUCTS = [
     id: "shirt",
     meshName: "Shirt",
     colorKey: "shirtColor",
-    name: "Urban Flex Hoodie",
-    description: "Premium heavyweight cotton blend. Relaxed drop-shoulder silhouette with a kangaroo pocket and ribbed cuffs.",
-    price: 89.99,
-    originalPrice: 129.99,
-    rating: 4.7,
-    reviews: 284,
-    badge: "Best Seller",
+    name: "Hoodie",
+    price: 999,
     camera: { position: [0, 0, 1.6], fov: 44 },
   },
   {
     id: "pants",
     meshName: "Pants",
     colorKey: "pantsColor",
-    name: "TechFit Cargo Pants",
-    description: "Water-resistant stretch fabric with articulated knees. Six-pocket utility design built for urban exploration.",
-    price: 74.99,
-    originalPrice: 109.99,
-    rating: 4.5,
-    reviews: 196,
-    badge: "New Drop",
+    name: "Pants",
+    price: 800,
     camera: { position: [0, 0, 1.8], fov: 44 },
   },
   {
     id: "shoes",
     meshName: "Shoes_pair",
     colorKey: "shoesColor",
-    name: "CloudStep Runners",
-    description: "Engineered mesh upper with responsive EVA foam midsole. Ultra-lightweight at just 218g per shoe.",
-    price: 119.99,
-    originalPrice: 159.99,
-    rating: 4.9,
-    reviews: 512,
-    badge: "Top Rated",
+    name: "Shoes",
+    price: 500,
     camera: { position: [0, 0, 1.4], fov: 44 },
   },
 ];
 
-// ─── Star Rating ─────────────────────────────────────────────────────────────
-const StarRating = ({ rating }) => {
-  return (
-    <div className="ec-stars">
-      {[1, 2, 3, 4, 5].map((star) => {
-        const filled = rating >= star;
-        const half = !filled && rating >= star - 0.5;
-        return (
-          <svg key={star} viewBox="0 0 24 24" className="ec-star" fill={filled ? "#F59E0B" : half ? "url(#half)" : "none"} stroke="#F59E0B" strokeWidth="1.5">
-            {half && (
-              <defs>
-                <linearGradient id="half">
-                  <stop offset="50%" stopColor="#F59E0B" />
-                  <stop offset="50%" stopColor="transparent" />
-                </linearGradient>
-              </defs>
-            )}
-            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-          </svg>
-        );
-      })}
-    </div>
-  );
-};
 
 // ─── Product Card ─────────────────────────────────────────────────────────────
 const ProductCard = ({ product, isCustomizing, onCustomize }) => {
@@ -82,7 +43,6 @@ const ProductCard = ({ product, isCustomizing, onCustomize }) => {
   const currentColor = snap[product.colorKey];
   const isWishlisted = snap.wishlist.includes(product.id);
   const isInCart = snap.cart.includes(product.id);
-  const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   const toggleWishlist = (e) => {
     e.stopPropagation();
@@ -112,9 +72,6 @@ const ProductCard = ({ product, isCustomizing, onCustomize }) => {
       whileHover={{ y: -6 }}
       style={{ "--accent": currentColor }}
     >
-      {/* Badge */}
-      <div className="ec-badge">{product.badge}</div>
-
       {/* Wishlist */}
       <button
         className={`ec-wishlist ${isWishlisted ? "ec-wishlist--active" : ""}`}
@@ -151,18 +108,11 @@ const ProductCard = ({ product, isCustomizing, onCustomize }) => {
       <div className="ec-info">
         <div className="ec-info-top">
           <h3 className="ec-name">{product.name}</h3>
-          <div className="ec-rating-row">
-            <StarRating rating={product.rating} />
-            <span className="ec-reviews">({product.reviews})</span>
-          </div>
-          <p className="ec-desc">{product.description}</p>
         </div>
 
         <div className="ec-info-bottom">
           <div className="ec-price-row">
-            <span className="ec-price">${product.price.toFixed(2)}</span>
-            <span className="ec-original-price">${product.originalPrice.toFixed(2)}</span>
-            <span className="ec-discount">-{discount}%</span>
+            <span className="ec-price">₹{product.price}</span>
           </div>
 
           <div className="ec-actions">
@@ -209,7 +159,6 @@ const CustomizerView = ({ productId, onBack }) => {
   const currentColor = snap[product.colorKey];
   const isInCart = snap.cart.includes(product.id);
   const isWishlisted = snap.wishlist.includes(product.id);
-  const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   const toggleWishlist = (e) => {
     e.stopPropagation();
@@ -241,9 +190,6 @@ const CustomizerView = ({ productId, onBack }) => {
       {/* ── Left Side: Large 3D Canvas Preview ── */}
       <div className="ec-single-canvas-area">
         <div className="ec-canvas-bg" style={{ "--accent": currentColor }} />
-        
-        {/* Dynamic Badge */}
-        <div className="ec-single-badge">{product.badge}</div>
         
         {/* Wishlist Button */}
         <button
@@ -277,7 +223,7 @@ const CustomizerView = ({ productId, onBack }) => {
       </div>
 
       {/* ── Right Side: Customization & Info Panel ── */}
-      <div className="ec-single-panel">
+      <div className="ec-single-panel" data-lenis-prevent>
         {/* Breadcrumb / Back Button */}
         <button className="ec-single-back-link" onClick={onBack}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -287,19 +233,11 @@ const CustomizerView = ({ productId, onBack }) => {
         </button>
 
         <div className="ec-single-info-container">
-          <div className="ec-rating-row">
-            <StarRating rating={product.rating} />
-            <span className="ec-reviews">({product.reviews} customer reviews)</span>
-          </div>
           <h1 className="ec-single-name">{product.name}</h1>
           
           <div className="ec-single-price-row">
-            <span className="ec-single-price">${product.price.toFixed(2)}</span>
-            <span className="ec-single-original-price">${product.originalPrice.toFixed(2)}</span>
-            <span className="ec-single-discount">-{discount}% OFF</span>
+            <span className="ec-single-price">₹{product.price}</span>
           </div>
-
-          <p className="ec-single-desc">{product.description}</p>
         </div>
 
         <hr className="ec-single-divider" />
@@ -310,7 +248,7 @@ const CustomizerView = ({ productId, onBack }) => {
             <span className="ec-studio-dot" style={{ background: currentColor }} />
             Customize Color
           </h3>
-          <p className="ec-studio-subtitle">Choose a swatch or pick a custom hex value from the spectrum</p>
+          <p className="ec-studio-subtitle">pick a custom colour from the range of colours</p>
           
           {/* Quick Swatches */}
           <div className="ec-single-swatches">
@@ -396,8 +334,8 @@ const Customizer = () => {
             </button>
 
             <div className="ec-nav-title">
-              <span className="ec-nav-brand">ULTIMEZ</span>
-              <span className="ec-nav-sub">Studio Collection</span>
+              <span className="ec-nav-brand">3D HAUL</span>
+        
             </div>
 
             <div className="ec-nav-icons">
@@ -430,6 +368,7 @@ const Customizer = () => {
                 <motion.div
                   key="grid-view"
                   className="ec-grid"
+                  data-lenis-prevent
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}

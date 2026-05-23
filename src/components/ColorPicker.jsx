@@ -2,10 +2,6 @@ import { SketchPicker } from 'react-color'
 import { useSnapshot } from 'valtio'
 import state from '../store'
 
-/**
- * ColorPicker reads/writes the per-mesh color based on state.selectedMesh.
- * When `inline` prop is true, it renders without absolute positioning (for panels).
- */
 const ColorPicker = ({ inline = false }) => {
   const snap = useSnapshot(state)
 
