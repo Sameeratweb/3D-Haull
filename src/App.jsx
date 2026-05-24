@@ -42,7 +42,7 @@ function App() {
   }, [snap.intro])
 
   return (
-    <main className={`app transition-all ease-in ${snap.intro ? "min-h-screen overflow-y-auto overflow-x-hidden" : "h-screen overflow-hidden"}`}>
+    <main className={`app transition-all ease-in ${snap.intro ? "h-screen overflow-hidden xl:h-auto xl:min-h-screen xl:overflow-visible" : "h-screen overflow-hidden"}`}>
       <Home />
       <Canvas />
       <Customizer />

@@ -12,10 +12,18 @@ import state from '../store'
 const Home = () => {
     const snap = useSnapshot(state)
 
+    const handleScroll = (e) => {
+        state.homeScrollY = e.currentTarget.scrollTop;
+    }
+
     return (
         <AnimatePresence>
             {snap.intro && (
-                <motion.div className='home' {...slideAnimation("left")}>
+                <motion.div 
+                    className='home' 
+                    {...slideAnimation("left")}
+                    onScroll={handleScroll}
+                >
 
                     {/* Section 1: Hero */}
                     <section className="home-section">

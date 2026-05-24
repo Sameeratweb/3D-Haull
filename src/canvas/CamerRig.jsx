@@ -24,7 +24,9 @@ const CameraRig = ({ children }) => {
     easing.damp3(state.camera.position, targetPosition, 0.25, delta)
 
     // set the model rotation smoothly based on mouse position + page scroll
-    const scrollRotation = snap.intro ? (window.scrollY * 0.005) : 0;
+    const scrollRotation = snap.intro 
+      ? (isBreakpoint ? snap.homeScrollY * 0.005 : window.scrollY * 0.005) 
+      : 0;
     easing.dampE(
       group.current.rotation,
       [state.pointer.y / 10, -state.pointer.x / 5 + scrollRotation, 0],
