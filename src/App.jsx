@@ -41,6 +41,56 @@ function App() {
     }
   }, [snap.intro])
 
+  // Synchronize URL Hash -> Valtio State (Browser Back/Forward / Mobile Swipe Gestures)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '' || hash === '#' || hash === '#/') {
+        if (!state.intro || state.selectedMesh !== null) {
+          state.intro = true;
+          state.selectedMesh = null;
+          state.hasInteracted = false;
+        }
+      } else if (hash === '#shop') {
+        if (state.intro || state.selectedMesh !== null) {
+          state.intro = false;
+          state.selectedMesh = null;
+        }
+      } else if (hash.startsWith('#customize/')) {
+        const productId = hash.replace('#customize/', '');
+        if (state.intro || state.selectedMesh !== productId) {
+          state.intro = false;
+          state.selectedMesh = productId;
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    // Sync initial hash on load
+    handleHashChange();
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Synchronize Valtio State -> URL Hash (User UI Click Transitions)
+  useEffect(() => {
+    if (snap.intro) {
+      if (window.location.hash !== '' && window.location.hash !== '#/' && window.location.hash !== '#') {
+        window.location.hash = '#/';
+      }
+    } else if (snap.selectedMesh) {
+      const targetHash = `#customize/${snap.selectedMesh}`;
+      if (window.location.hash !== targetHash) {
+        window.location.hash = targetHash;
+      }
+    } else {
+      const targetHash = '#shop';
+      if (window.location.hash !== targetHash) {
+        window.location.hash = targetHash;
+      }
+    }
+  }, [snap.intro, snap.selectedMesh]);
+
   return (
     <main className={`app transition-all ease-in ${snap.intro ? "h-screen overflow-hidden xl:h-auto xl:min-h-screen xl:overflow-visible" : "h-screen overflow-hidden"}`}>
       <Home />

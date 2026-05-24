@@ -314,6 +314,7 @@ const Customizer = () => {
   const handleGoBack = () => {
     state.intro = true;
     state.selectedMesh = null;
+    state.hasInteracted = false;
   };
 
   return (

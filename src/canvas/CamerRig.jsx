@@ -21,18 +21,23 @@ const CameraRig = ({ children }) => {
     }
 
     // set model camera position
-    easing.damp3(state.camera.position, targetPosition, 0.25, delta)
+    if (!snap.isDragging && !snap.hasInteracted) {
+      easing.damp3(state.camera.position, targetPosition, 0.25, delta)
+    }
 
     // set the model rotation smoothly based on mouse position + page scroll
     const scrollRotation = snap.intro 
       ? (isBreakpoint ? snap.homeScrollY * 0.005 : window.scrollY * 0.005) 
       : 0;
-    easing.dampE(
-      group.current.rotation,
-      [state.pointer.y / 10, -state.pointer.x / 5 + scrollRotation, 0],
-      0.25,
-      delta,
-    )
+    
+    if (!snap.isDragging) {
+      easing.dampE(
+        group.current.rotation,
+        [state.pointer.y / 10, -state.pointer.x / 5 + scrollRotation, 0],
+        0.25,
+        delta,
+      )
+    }
   })
 
   return (
