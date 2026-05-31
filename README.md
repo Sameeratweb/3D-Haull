@@ -2,6 +2,12 @@
 
 3D HAUL is a modern 3D fashion customization platform that allows users to personalize clothing items in real-time using interactive 3D models. Built with React, Three.js, React Three Fiber, and Valtio, the application delivers an immersive shopping experience with live product previews and seamless customization.
 
+## Previews
+
+| Homepage / Intro View | Customizer / Shop View |
+| :---: | :---: |
+| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) |
+
 ## Features
 
 * Interactive 3D character visualization
