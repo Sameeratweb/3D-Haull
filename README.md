@@ -4,9 +4,23 @@
 
 ## Previews
 
-| Homepage | Shop View | Product Showcase |
-| :---: | :---: | :---: |
-| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Product Showcase](./docs/screenshots/product_showcase.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) |
+### Homepage
+
+<p align="center">
+  <img src="./docs/screenshots/home_preview.png" alt="Homepage Preview" width="900">
+</p>
+
+### Shop View
+
+<p align="center">
+  <img src="./docs/screenshots/product_showcase.png" alt="Product Showcase" width="900">
+</p>
+
+### Customizer View
+
+<p align="center">
+  <img src="./docs/screenshots/customizer_preview.png" alt="Customizer Preview" width="900">
+</p>
 
 ## Features
 
@@ -102,7 +116,6 @@ npm run build
 * Outfit saving and sharing
 * Shopping cart integration
 * User authentication
-
 
 ## License
 
