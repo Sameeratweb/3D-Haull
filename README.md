@@ -4,9 +4,9 @@
 
 ## Previews
 
-| Homepage / Intro View | Customizer / Shop View |
-| :---: | :---: |
-| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) |
+| Homepage / Intro View | Customizer / Shop View | Product Showcase |
+| :---: | :---: | :---: |
+| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) | ![Product Showcase](./docs/screenshots/product_showcase.png) |
 
 ## Features
 
