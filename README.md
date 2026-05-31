@@ -6,7 +6,7 @@
 
 | Homepage / Intro View | Customizer / Shop View | Product Showcase |
 | :---: | :---: | :---: |
-| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) | ![Product Showcase](./docs/screenshots/product_showcase.png) |
+| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Product Showcase](./docs/screenshots/product_showcase.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) |
 
 ## Features
 
