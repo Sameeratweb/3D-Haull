@@ -21,17 +21,6 @@
 <p align="center">
   <img src="./docs/screenshots/customizer_preview.png" alt="Customizer Preview" width="900">
 </p>
-### Image Previews
-
-| Homepage / Intro View | Customizer / Shop View |
-| :---: | :---: |
-| ![Homepage Preview](./docs/screenshots/home_preview.png) | ![Customizer Preview](./docs/screenshots/customizer_preview.png) |
-
-### Video Previews
-
-| Homepage Animation & Intro | Product Customizer & E-Commerce Flow |
-| :---: | :---: |
-| <video src="./docs/videos/Home.mp4" width="100%" controls autoplay loop muted></video> | <video src="./docs/videos/Customizing.mp4" width="100%" controls autoplay loop muted></video> |
 
 ## Features
 
